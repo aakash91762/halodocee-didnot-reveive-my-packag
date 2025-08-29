@@ -1,0 +1,388 @@
+<Html>
+
+    <head>
+        <title>
+    
+        </title>
+    </head>
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    
+    <body style="background-color:#EEEEEE; ">
+        <style>
+            body {
+                font-family: 'Inter';
+            }
+    
+            input {
+                height: 2em;
+                width: 20em;
+                vertical-align: middle;
+            }
+    
+            label {
+                color: black;
+            }
+    
+            p {
+                text-align: justify
+            }
+    
+            .container {
+                width: 95%;
+                background-color: #EEEEEE;
+                font-size: 12px;
+                text-align: left;
+            }
+    
+            .input {
+                margin: 5px 0px;
+                padding: 15px 10px;
+                border: none;
+                border: none;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 5px;
+                border: 1px solid #EEEEEE;
+                outline: 0;
+                height: 25px;
+                width: 100%;
+                font-size: 12px;
+                background-color: #f5f5f5;
+                color: #666;
+            }
+    
+            .custom-select {
+                margin: 5px 0px;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid #EEEEEE;
+                height: 30px;
+                width: 100%;
+                font-size: 12px;
+                font-family: 'Inter';
+            }
+    
+            .input:focus {
+                border: 1px solid #DD0150;
+            }
+    
+            .custom-select:focus {
+                border: 1px solid #DD0150;
+            }
+    
+            .submit {
+                background-color: #DD0150;
+                padding: 15px 15px 15px 15px;
+                width: 100%;
+                border-radius: 5px;
+                font-size: 14px;
+                font-weight: bold;
+                border: none;
+                color: white;
+                height: 45px;
+            }
+    
+            .submit:hover {
+                background-color: #f74586;
+            }
+    
+            .result {
+                font-weight: bold;
+                margin: 10px 0px 20px;
+            }
+    
+            select option:checked {
+                background-color: #DD0150 !important;
+                color: white !important;
+            }
+
+            .checkbox-group {
+                margin: 5px 0px;
+                padding: 10px;
+                border: 1px solid #EEEEEE;
+                border-radius: 5px;
+                background-color: white;
+            }
+
+            .checkbox-item {
+                margin: 8px 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .checkbox-item input[type="checkbox"] {
+                width: auto;
+                height: auto;
+                margin-right: 8px;
+            }
+
+            .checkbox-item label {
+                margin: 0;
+                cursor: pointer;
+                flex: 1;
+            }
+        </style>
+        <center>
+    
+    
+            <div class="container">
+                <label id="header"></label> <br>
+                <br>
+    
+                <form>
+                    <label id="lOrderNumber"></label> <Br>
+                    <input class="input" id="orderNumber" type="text" value="" name="orderNumber" readonly/>
+                    <div id="rOrderNumber" class="result"></div>
+
+                    <label id="lIssue"></label><br>
+                    <select class="custom-select" id="issue" name="issue" required>
+                        <option class="select-opt" id="opt-default" value="">Select an issue category</option>
+                        <option class="select-opt" id="opt-1"></option>
+                        <option class="select-opt" id="opt-2"></option>
+                        <option class="select-opt" id="opt-3"></option>
+                        <option class="select-opt" id="opt-4"></option>
+                        <option class="select-opt" id="opt-5"></option>
+                    </select>
+                    <div id="rIssue" class="result"></div>
+
+                    <label id="lChooseItem"></label><br>
+                    <div class="checkbox-group" id="itemCheckboxGroup">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="item1" name="items" value="item1">
+                            <label for="item1" id="lItem1"></label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="item2" name="items" value="item2">
+                            <label for="item2" id="lItem2"></label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="item3" name="items" value="item3">
+                            <label for="item3" id="lItem3"></label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="item4" name="items" value="item4">
+                            <label for="item4" id="lItem4"></label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="item5" name="items" value="item5">
+                            <label for="item5" id="lItem5"></label>
+                        </div>
+                    </div>
+                    <div id="rItems" class="result"></div>
+
+                    <label id="lDescription"></label><br>
+                    <textarea class="input" id="description" name="description" rows="4" placeholder="" style="height: auto; min-height: 80px; resize: vertical;"></textarea>
+                    <div id="rDescription" class="result"></div>
+    
+                    <input type="hidden" id="language" name="language" value="en" />
+                    <button id="submit" class="submit" type="button"></button>
+                </form>
+    
+            </div>
+    
+    
+        </center>
+        <script type="text/javascript">
+    
+            let params = new URLSearchParams(window.location.search)
+            var language = params.get('language')
+            var orderNumber = params.get('orderNumber')
+            var issue = params.get('issue')
+            var items = params.get('items')
+            var description = params.get('description')
+
+            // Auto-populate order number
+            function generateOrderNumber() {
+                const prefix = "ORD";
+                const timestamp = new Date().getTime().toString().slice(-8);
+                const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+                return prefix + timestamp + random;
+            }
+
+            // Set auto-populated order number if not provided
+            if (!orderNumber) {
+                orderNumber = generateOrderNumber();
+            }
+            document.getElementById("orderNumber").setAttribute("value", orderNumber);
+
+            // Check if form data exists in URL and populate accordingly
+            if (orderNumber && issue && items && description) {
+                let o = document.getElementById('orderNumber');
+                let i = document.getElementById('issue');
+                let checkboxGroup = document.getElementById('itemCheckboxGroup');
+                let d = document.getElementById('description');
+                let s = document.getElementById('submit');
+                
+                o.setAttribute("type", "hidden");
+                i.hidden = true;
+                checkboxGroup.hidden = true;
+                d.hidden = true;
+                s.style.visibility = "hidden";
+                
+                document.getElementById('rOrderNumber').innerHTML = orderNumber;
+                document.getElementById('rIssue').innerHTML = issue;
+                document.getElementById('rItems').innerHTML = items.replace(/,/g, ', ');
+                document.getElementById('rDescription').innerHTML = description;
+                
+                o.setAttribute("value", orderNumber);
+                i.setAttribute("value", issue);
+                d.setAttribute("value", description);
+                
+                let sendData = { orderNumber, issue, items: items.split(','), description };
+                myFunction(sendData);
+            }
+
+            // Language setup
+            if (language == 'id') {
+                document.getElementById('header').innerHTML = 'Silakan lengkapi informasi berikut untuk melaporkan masalah Anda.';
+                document.getElementById('lOrderNumber').innerHTML = "Nomor Pesanan"
+                document.getElementById('lIssue').innerHTML = "Masalah"
+                document.getElementById('lChooseItem').innerHTML = "Pilih item yang bermasalah"
+                document.getElementById('lDescription').innerHTML = "Jelaskan masalah:"
+                document.getElementById('description').placeholder = "Jelaskan masalah"
+                document.getElementById('submit').innerHTML = 'Kirim';
+                
+                // Issue options in Indonesian
+                document.getElementById('opt-1').innerHTML = "Produk rusak";
+                document.getElementById('opt-1').value = "Produk rusak";
+                document.getElementById('opt-2').innerHTML = "Pengiriman terlambat"
+                document.getElementById('opt-2').value = "Pengiriman terlambat";
+                document.getElementById('opt-3').innerHTML = "Item hilang"
+                document.getElementById('opt-3').value = "Item hilang";
+                document.getElementById('opt-4').innerHTML = "Kualitas tidak sesuai"
+                document.getElementById('opt-4').value = "Kualitas tidak sesuai";
+                document.getElementById('opt-5').innerHTML = "Lainnya"
+                document.getElementById('opt-5').value = "Lainnya";
+
+                // Item options in Indonesian
+                document.getElementById('lItem1').innerHTML = "Perangkat elektronik";
+                document.getElementById('lItem2').innerHTML = "Pakaian";
+                document.getElementById('lItem3').innerHTML = "Aksesoris";
+                document.getElementById('lItem4').innerHTML = "Makanan";
+                document.getElementById('lItem5').innerHTML = "Lainnya";
+
+                let x = document.getElementById('language');
+                x.setAttribute("value", "id");
+            } else {
+                document.getElementById('header').innerHTML = 'Please complete the following information to report your issue.';
+                document.getElementById('lOrderNumber').innerHTML = "Order Number"
+                document.getElementById('lIssue').innerHTML = "Issue"
+                document.getElementById('lChooseItem').innerHTML = "Choose the item with an issue"
+                document.getElementById('lDescription').innerHTML = "Describe the problem:"
+                document.getElementById('description').placeholder = "Describe the problem:"
+                document.getElementById('submit').innerHTML = 'Submit';
+                
+                // Issue options in English
+                document.getElementById('opt-1').innerHTML = "Damaged product";
+                document.getElementById('opt-1').value = "Damaged product";
+                document.getElementById('opt-2').innerHTML = "Late delivery"
+                document.getElementById('opt-2').value = "Late delivery";
+                document.getElementById('opt-3').innerHTML = "Missing item"
+                document.getElementById('opt-3').value = "Missing item";
+                document.getElementById('opt-4').innerHTML = "Quality not as expected"
+                document.getElementById('opt-4').value = "Quality not as expected";
+                document.getElementById('opt-5').innerHTML = "Other"
+                document.getElementById('opt-5').value = "Other";
+
+                // Item options in English
+                document.getElementById('lItem1').innerHTML = "Electronics";
+                document.getElementById('lItem2').innerHTML = "Clothing";
+                document.getElementById('lItem3').innerHTML = "Accessories";
+                document.getElementById('lItem4').innerHTML = "Food items";
+                document.getElementById('lItem5').innerHTML = "Other";
+
+                let x = document.getElementById('language');
+                x.setAttribute("value", "en");
+            }
+
+            // Handle form submission
+            document.getElementById("submit").addEventListener("click", function() {
+                const orderNum = document.getElementById('orderNumber').value;
+                const selectedIssue = document.getElementById('issue').value;
+                const checkboxes = document.querySelectorAll('input[name="items"]:checked');
+                const selectedItems = Array.from(checkboxes).map(cb => cb.nextElementSibling.textContent);
+                const problemDescription = document.getElementById('description').value.trim();
+
+                if (!selectedIssue) {
+                    alert(language === 'id' ? 'Silakan pilih kategori masalah' : 'Please select an issue category');
+                    return;
+                }
+
+                if (selectedItems.length === 0) {
+                    alert(language === 'id' ? 'Silakan pilih minimal satu item' : 'Please select at least one item');
+                    return;
+                }
+
+                if (!problemDescription) {
+                    alert(language === 'id' ? 'Silakan jelaskan masalah Anda' : 'Please describe the problem');
+                    return;
+                }
+
+                // Update URL with form data
+                const urlParams = new URLSearchParams();
+                urlParams.set('orderNumber', orderNum);
+                urlParams.set('issue', selectedIssue);
+                urlParams.set('items', selectedItems.join(','));
+                urlParams.set('description', problemDescription);
+                urlParams.set('language', language);
+                
+                const newUrl = window.location.pathname + '?' + urlParams.toString();
+                window.history.pushState({}, '', newUrl);
+
+                const sendData = {
+                    orderNumber: orderNum,
+                    issue: selectedIssue,
+                    items: selectedItems,
+                    description: problemDescription,
+                    // language: language
+                };
+
+                myFunction(sendData);
+            });
+
+            function myFunction(sendData) {
+                console.log(sendData)
+                let data = JSON.stringify(sendData)
+                
+                // Hide form inputs and show results (similar to original behavior)
+                let orderInput = document.getElementById('orderNumber');
+                let issueSelect = document.getElementById('issue');
+                let checkboxGroup = document.getElementById('itemCheckboxGroup');
+                let descriptionTextarea = document.getElementById('description');
+                let submitBtn = document.getElementById('submit');
+                
+                orderInput.setAttribute("type", "hidden");
+                issueSelect.hidden = true;
+                checkboxGroup.hidden = true;
+                descriptionTextarea.hidden = true;
+                submitBtn.style.visibility = "hidden";
+                
+                // Display results
+                document.getElementById('rOrderNumber').innerHTML = sendData.orderNumber;
+                document.getElementById('rIssue').innerHTML = sendData.issue;
+                document.getElementById('rItems').innerHTML = sendData.items.join(', ');
+                document.getElementById('rDescription').innerHTML = sendData.description;
+
+                window.parent.postMessage(JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: JSON.stringify({
+                        event: {
+                            code: new Date().getTime().toString(),
+                            data
+                        },
+                    }),
+                }), "*");
+
+                console.log(JSON.stringify({
+                    event_code: "ym-client-event",
+                    data: JSON.stringify({
+                        event: {
+                            code: new Date().getTime().toString(),
+                            data
+                        },
+                    }),
+                }))
+            };
+        </script>
+    </body>
+</Html>

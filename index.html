@@ -16,6 +16,7 @@
         height: 2em;
         width: 20em;
         vertical-align: middle;
+
       }
       label {
         color: black;
@@ -31,7 +32,7 @@
       }
       .input {
         margin: 5px 0px;
-        padding: 15px 10px;
+        padding: 1px 10px;
         border: 1px solid #eeeeee;
         border-radius: 5px;
         outline: 0;
@@ -97,6 +98,10 @@
         cursor: pointer;
         flex: 1;
       }
+      .free-text{
+    min-height: 2em;
+    padding-top: 10px;
+      }
     </style>
     <center>
       <div class="container">
@@ -128,13 +133,13 @@
           <div id="rItems" class="result"></div>
 
           <label id="lDescription"></label><br />
-          <textarea
-            class="input"
-            id="description"
-            name="description"
-            rows="4"
-            style="height: auto; min-height: 80px; resize: vertical"
-          ></textarea>
+          <input
+          class="input"
+          id="description"
+          type="text"
+          value=""
+          name="description"
+        />
           <div id="rDescription" class="result"></div>
 
           <input type="hidden" id="language" name="language" value="en" />

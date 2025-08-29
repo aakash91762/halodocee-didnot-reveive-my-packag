@@ -131,10 +131,14 @@
     
                 <form>
                     <label id="lOrderNumber"></label> <Br>
-                    <input class="input" id="orderNumber" type="text" value="" name="orderNumber" readonly/>
+                    <input class="input" id="orderNumber" type="text" value="" name="orderNumber" />
                     <div id="rOrderNumber" class="result"></div>
 
-                    <label id="lIssue"></label><br>
+                    <label id="lIssue"></label> <Br>
+                        <input class="input" id="issue" type="text" value="" name="issue" required/>
+                        <div id="rIssue" class="result"></div>
+
+                    <!-- <label id="lIssue"></label><br>
                     <select class="custom-select" id="issue" name="issue" required>
                         <option class="select-opt" id="opt-default" value="">Select an issue category</option>
                         <option class="select-opt" id="opt-1"></option>
@@ -143,7 +147,7 @@
                         <option class="select-opt" id="opt-4"></option>
                         <option class="select-opt" id="opt-5"></option>
                     </select>
-                    <div id="rIssue" class="result"></div>
+                    <div id="rIssue" class="result"></div> -->
 
                     <label id="lChooseItem"></label><br>
                     <div class="checkbox-group" id="itemCheckboxGroup">
@@ -243,16 +247,16 @@
                 document.getElementById('submit').innerHTML = 'Kirim';
                 
                 // Issue options in Indonesian
-                document.getElementById('opt-1').innerHTML = "Produk rusak";
-                document.getElementById('opt-1').value = "Produk rusak";
-                document.getElementById('opt-2').innerHTML = "Pengiriman terlambat"
-                document.getElementById('opt-2').value = "Pengiriman terlambat";
-                document.getElementById('opt-3').innerHTML = "Item hilang"
-                document.getElementById('opt-3').value = "Item hilang";
-                document.getElementById('opt-4').innerHTML = "Kualitas tidak sesuai"
-                document.getElementById('opt-4').value = "Kualitas tidak sesuai";
-                document.getElementById('opt-5').innerHTML = "Lainnya"
-                document.getElementById('opt-5').value = "Lainnya";
+                // document.getElementById('opt-1').innerHTML = "Produk rusak";
+                // document.getElementById('opt-1').value = "Produk rusak";
+                // document.getElementById('opt-2').innerHTML = "Pengiriman terlambat"
+                // document.getElementById('opt-2').value = "Pengiriman terlambat";
+                // document.getElementById('opt-3').innerHTML = "Item hilang"
+                // document.getElementById('opt-3').value = "Item hilang";
+                // document.getElementById('opt-4').innerHTML = "Kualitas tidak sesuai"
+                // document.getElementById('opt-4').value = "Kualitas tidak sesuai";
+                // document.getElementById('opt-5').innerHTML = "Lainnya"
+                // document.getElementById('opt-5').value = "Lainnya";
 
                 // Item options in Indonesian
                 document.getElementById('lItem1').innerHTML = "Perangkat elektronik";
@@ -273,16 +277,16 @@
                 document.getElementById('submit').innerHTML = 'Submit';
                 
                 // Issue options in English
-                document.getElementById('opt-1').innerHTML = "Damaged product";
-                document.getElementById('opt-1').value = "Damaged product";
-                document.getElementById('opt-2').innerHTML = "Late delivery"
-                document.getElementById('opt-2').value = "Late delivery";
-                document.getElementById('opt-3').innerHTML = "Missing item"
-                document.getElementById('opt-3').value = "Missing item";
-                document.getElementById('opt-4').innerHTML = "Quality not as expected"
-                document.getElementById('opt-4').value = "Quality not as expected";
-                document.getElementById('opt-5').innerHTML = "Other"
-                document.getElementById('opt-5').value = "Other";
+                // document.getElementById('opt-1').innerHTML = "Damaged product";
+                // document.getElementById('opt-1').value = "Damaged product";
+                // document.getElementById('opt-2').innerHTML = "Late delivery"
+                // document.getElementById('opt-2').value = "Late delivery";
+                // document.getElementById('opt-3').innerHTML = "Missing item"
+                // document.getElementById('opt-3').value = "Missing item";
+                // document.getElementById('opt-4').innerHTML = "Quality not as expected"
+                // document.getElementById('opt-4').value = "Quality not as expected";
+                // document.getElementById('opt-5').innerHTML = "Other"
+                // document.getElementById('opt-5').value = "Other";
 
                 // Item options in English
                 document.getElementById('lItem1').innerHTML = "Electronics";

@@ -225,22 +225,22 @@
       // ✅ Language setup
       if (language == "id") {
         document.getElementById("header").innerHTML =
-          "Silakan lengkapi informasi berikut untuk melaporkan masalah Anda.";
-        document.getElementById("lOrderNumber").innerHTML = "Nomor Pesanan";
-        document.getElementById("lIssue").innerHTML = "Masalah";
+          "Lengkapi informasi berikut untuk melaporkan masalah.";
+        document.getElementById("lOrderNumber").innerHTML = "Nomor Pesanan:";
+        document.getElementById("lIssue").innerHTML = "Masalah:";
         document.getElementById("lChooseItem").innerHTML =
-          "Pilih item yang bermasalah";
+          "Pilih item yang bermasalah:";
         document.getElementById("lDescription").innerHTML = "Jelaskan masalah:";
         document.getElementById("description").placeholder = "Jelaskan masalah";
         document.getElementById("submit").innerHTML = "Kirim";
         document.getElementById("language").setAttribute("value", "id");
       } else {
         document.getElementById("header").innerHTML =
-          "Please complete the following information to report your issue.";
-        document.getElementById("lOrderNumber").innerHTML = "Order Number";
-        document.getElementById("lIssue").innerHTML = "Issue";
+          "Please share the following information to report an issue.";
+        document.getElementById("lOrderNumber").innerHTML = "Order Number:";
+        document.getElementById("lIssue").innerHTML = "Issue:";
         document.getElementById("lChooseItem").innerHTML =
-          "Choose the item with an issue";
+          "Choose the item with an issue:";
         document.getElementById("lDescription").innerHTML =
           "Describe the problem:";
         document.getElementById("description").placeholder =

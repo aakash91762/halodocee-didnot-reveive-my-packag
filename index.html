@@ -114,6 +114,7 @@
             type="text"
             value=""
             name="orderNumber"
+            readonly
           />
           <div id="rOrderNumber" class="result"></div>
 
@@ -125,6 +126,7 @@
             value=""
             name="issue"
             required
+            readonly
           />
           <div id="rIssue" class="result"></div>
 
@@ -229,9 +231,9 @@
         document.getElementById("lOrderNumber").innerHTML = "Nomor Pesanan:";
         document.getElementById("lIssue").innerHTML = "Masalah:";
         document.getElementById("lChooseItem").innerHTML =
-          "Pilih item yang bermasalah:";
-        document.getElementById("lDescription").innerHTML = "Jelaskan masalah:";
-        document.getElementById("description").placeholder = "Jelaskan masalah";
+          "Pilih Barang yang Bermasalah:";
+        document.getElementById("lDescription").innerHTML = "Jelaskan Masalah:";
+        document.getElementById("description").placeholder = "Jelaskan Masalah";
         document.getElementById("submit").innerHTML = "Kirim";
         document.getElementById("language").setAttribute("value", "id");
       } else {
@@ -242,9 +244,9 @@
         document.getElementById("lChooseItem").innerHTML =
           "Choose the item with an issue:";
         document.getElementById("lDescription").innerHTML =
-          "Describe the problem:";
+          "Tell us what’s going on:";
         document.getElementById("description").placeholder =
-          "Describe the problem:";
+          "Tell us what’s going on";
         document.getElementById("submit").innerHTML = "Submit";
         document.getElementById("language").setAttribute("value", "en");
       }

@@ -29,19 +29,27 @@
         background-color: #eeeeee;
         font-size: 12px;
         text-align: left;
+        /* justify-content: center; */
+        /* text-align: center; */
       }
+      /* updated by aakash */
       .input {
-        margin: 5px 0px;
-        padding: 1px 10px;
-        border: 1px solid #eeeeee;
-        border-radius: 5px;
-        outline: 0;
-        height: 25px;
-        width: 100%;
-        font-size: 12px;
-        /* background-color: #f5f5f5; */
-        /* color: #666; */
-      }
+          margin: 5px 0px;
+          padding: 15px 10px;
+          border: none;
+          border: none;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 5px;
+          border: 1px solid #EEEEEE;
+          outline: 0;
+          height: 2px;
+          width: 100%;
+          font-size: 12px;
+        }
+        .input:focus {
+          border: 1px solid #DD0150;
+        }
       .custom-select {
         margin: 5px 0px;
         padding: 5px 10px;
@@ -59,23 +67,25 @@
         border: 1px solid #dd0150;
       }
       .submit {
-        background-color: #dd0150;
-        padding: 15px;
-        width: 100%;
-        border-radius: 5px;
-        font-size: 14px;
-        font-weight: bold;
-        border: none;
-        color: white;
-        height: 45px;
-      }
+          background-color: #DD0150;
+          padding: 15px 15px 15px 15px;
+          width: 100%;
+          border-radius: 5px;
+          font-size: 14px;
+          font-weight: bold;
+          border: none;
+          color: white;
+          height: 45px;
+        }
+
       .submit:hover {
-        background-color: #f74586;
-      }
-      .result {
-        font-weight: bold;
-        margin: 10px 0px 20px;
-      }
+          background-color: #f74586;
+        }
+    
+        .result {
+          font-weight: bold;
+          margin: 10px 0px 20px;
+        }
       .checkbox-group {
         margin: 5px 0px;
         padding: 10px;
@@ -109,10 +119,11 @@
         flex: 1;
 
       }
-      .free-text{
+      /* .free-text{
     min-height: 2em;
     padding-top: 10px;
-      }
+      } */
+      
     </style>
     <center>
       <div class="container">

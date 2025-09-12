@@ -130,6 +130,15 @@
           />
           <div id="rOrderNumber" class="result"></div>
 
+          <label id="lemail"></label> <Br>
+            <input class="input" id="email" type="email" value="" name="email" size="15" required/>
+            <div id="remail" class="result"></div>
+
+
+
+
+
+
           <label id="lIssue"></label><br />
           <input
             class="input"
@@ -170,6 +179,7 @@
       var issue = params.get("issue");
       var items = params.get("items");
       var description = params.get("description");
+      var email = params.get('email')
 
       document
         .getElementById("orderNumber")
@@ -222,14 +232,18 @@
         let checkboxGroup = document.getElementById("itemCheckboxGroup");
         let d = document.getElementById("description");
         let s = document.getElementById("submit");
+        let e = document.getElementById("email");
 
         o.setAttribute("type", "hidden");
         i.hidden = true;
         checkboxGroup.hidden = true;
         d.hidden = true;
+        e.hidden = true;
+
         s.style.visibility = "hidden";
 
         document.getElementById("rOrderNumber").innerHTML = orderNumber;
+        document.getElementById("remail").innerHTML = email;
         document.getElementById("rIssue").innerHTML = issue;
         document.getElementById("rItems").innerHTML = items.replace(/,/g, ", ");
         document.getElementById("rDescription").innerHTML = description;
@@ -248,6 +262,8 @@
         document.getElementById("header").innerHTML =
           "Lengkapi informasi berikut untuk melaporkan masalah.";
         document.getElementById("lOrderNumber").innerHTML = "Nomor Pesanan:";
+        document.getElementById('lemail').placeholder = 'Email Aktif';
+        document.getElementById('lemail').innerHTML = 'Email Aktif:';
         document.getElementById("lIssue").innerHTML = "Masalah:";
         document.getElementById("lChooseItem").innerHTML =
           "Pilih barang yang belum diterima:";
@@ -259,6 +275,8 @@
         document.getElementById("header").innerHTML =
           "Please share the following information to report an issue.";
         document.getElementById("lOrderNumber").innerHTML = "Order Number:";
+        document.getElementById('lemail').innerHTML = 'Active Email ID:';
+        document.getElementById('email').placeholder = 'Active Email ID';
         document.getElementById("lIssue").innerHTML = "Issue:";
         document.getElementById("lChooseItem").innerHTML =
           "Choose items not yet received:";
@@ -276,6 +294,8 @@ document.querySelector("form").addEventListener("submit", function (e) {
  
 
   const orderNum = document.getElementById("orderNumber").value;
+  var email = document.getElementById("email").value;
+
   const selectedIssue = document.getElementById("issue").value;
   const checkboxes = document.querySelectorAll('input[name="items"]:checked');
   const selectedItems = Array.from(checkboxes).map((cb) => cb.value);
@@ -285,6 +305,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
 
   const urlParams = new URLSearchParams();
   urlParams.set("orderNumber", orderNum);
+  urlParams.set("email", email);
   urlParams.set("issue", selectedIssue);
   urlParams.set("items", selectedItems.join(","));
   urlParams.set("description", problemDescription);
@@ -295,6 +316,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
 
   const sendData = {
     orderNumber: orderNum,
+    email:email,
     issue: selectedIssue,
     items: selectedItems,
     description: problemDescription,
@@ -316,6 +338,7 @@ document.querySelector("form").addEventListener("submit", function (e) {
         let data = JSON.stringify(sendData);
 
         document.getElementById("orderNumber").setAttribute("type", "hidden");
+        document.getElementById("email").setAttribute("type", "hidden");
         document.getElementById("issue").hidden = true;
         document.getElementById("itemCheckboxGroup").hidden = true;
         document.getElementById("description").hidden = true;
@@ -323,6 +346,8 @@ document.querySelector("form").addEventListener("submit", function (e) {
 
         document.getElementById("rOrderNumber").innerHTML =
           sendData.orderNumber;
+          document.getElementById("remail").innerHTML =
+          sendData.email;
         document.getElementById("rIssue").innerHTML = sendData.issue;
         document.getElementById("rItems").innerHTML = sendData.items.join(", ");
         document.getElementById("rDescription").innerHTML =

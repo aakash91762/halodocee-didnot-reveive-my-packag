@@ -9,31 +9,32 @@
   </head>
   <body style="background-color: #eeeeee">
     <style>
-      body {
-        font-family: "Inter";
-      }
-      input {
-        height: 2em;
-        width: 20em;
-        vertical-align: middle;
-
-      }
-      label {
-        color: black;
-      }
-      p {
-        text-align: justify;
-      }
-      .container {
-        width: 95%;
-        background-color: #eeeeee;
-        font-size: 12px;
-        text-align: left;
-        /* justify-content: center; */
-        /* text-align: center; */
-      }
-      /* updated by aakash */
-      .input {
+              body {
+          font-family: 'Inter';
+        }
+    
+        input {
+          height: 2em;
+          width: 20em;
+          vertical-align: middle;
+        }
+    
+        label {
+          color: black;
+        }
+    
+        p {
+          text-align: justify
+        }
+    
+        .container {
+          width: 220px;
+          background-color: #EEEEEE;
+          font-size: 12px;
+          text-align: left;
+        }
+    
+        .input {
           margin: 5px 0px;
           padding: 15px 10px;
           border: none;
@@ -43,14 +44,36 @@
           border-radius: 5px;
           border: 1px solid #EEEEEE;
           outline: 0;
-          height: 2px;
-          width: 100%;
+          height: 0px;
+          width: 220px;
           font-size: 12px;
         }
+    
         .input:focus {
           border: 1px solid #DD0150;
         }
-      .custom-select {
+    
+        .submit {
+          background-color: #DD0150;
+          padding: 15px 15px 15px 15px;
+          width: 240px;
+          border-radius: 5px;
+          font-size: 14px;
+          font-weight: bold;
+          border: none;
+          color: white;
+          height: 45px;
+        }
+    
+        .submit:hover {
+          background-color: #f74586;
+        }
+    
+        .result {
+          font-weight: bold;
+          margin: 10px 0px 20px;
+        }
+        .custom-select {
         margin: 5px 0px;
         padding: 5px 10px;
         border-radius: 5px;
@@ -60,32 +83,10 @@
         font-size: 12px;
         font-family: "Inter";
       }
-      .input:focus {
-        border: 1px solid #dd0150;
-      }
       .custom-select:focus {
         border: 1px solid #dd0150;
       }
-      .submit {
-          background-color: #DD0150;
-          padding: 15px 15px 15px 15px;
-          width: 100%;
-          border-radius: 5px;
-          font-size: 14px;
-          font-weight: bold;
-          border: none;
-          color: white;
-          height: 45px;
-        }
 
-      .submit:hover {
-          background-color: #f74586;
-        }
-    
-        .result {
-          font-weight: bold;
-          margin: 10px 0px 20px;
-        }
       .checkbox-group {
         margin: 5px 0px;
         padding: 10px;
@@ -119,10 +120,6 @@
         flex: 1;
 
       }
-      /* .free-text{
-    min-height: 2em;
-    padding-top: 10px;
-      } */
       
     </style>
     <center>
